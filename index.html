@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Cá Nhân Chi Tiết - Kết Quả Học Tập Học Phần</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0f19;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #0f172a;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.3);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 20px;
+        }
+
+        nav .logo {
+            color: #38bdf8;
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #38bdf8;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: 100px auto 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            background: #111827;
+            padding: 45px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        h2 {
+            color: #38bdf8;
+            border-bottom: 4px solid #38bdf8;
+            padding-bottom: 12px;
+            margin-bottom: 30px;
+            font-size: 26px;
+        }
+
+        h3 {
+            color: #38bdf8;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3::before {
+            content: "◆";
+            color: #38bdf8;
+            font-size: 14px;
+        }
+
+        h4 {
+            color: #cbd5e1;
+            margin: 15px 0 8px 0;
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        p {
+            margin-bottom: 12px;
+            color: #94a3b8;
+            text-align: justify;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+            color: #94a3b8;
+        }
+
+        li {
+            margin-bottom: 6px;
+        }
+
+        /* Khối nội dung hộp bo góc tối phát sáng */
+        .content-box {
+            background-color: #0f172a;
+            border: 1px solid rgba(56, 189, 248, 0.15);
+            border-left: 4px solid #38bdf8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .content-box:hover {
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .content-box h3 {
+            margin-top: 0;
+            color: #38bdf8;
+        }
+
+        .content-box h3::before {
+            display: none; /* Ẩn icon trước h3 nếu nằm trong hộp */
+        }
+
+        .box-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin: 0;
+        }
+
+        /* Nút bấm liên kết */
+        .btn-link {
+            display: inline-block;
+            background-color: #0f172a;
+            color: #fff;
+            padding: 10px 20px;
+            border: 1px solid #1e293b;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .btn-link:hover {
+            background-color: #1e293b;
+            border-color: #38bdf8;
+            color: #38bdf8;
+            transform: translateX(5px);
+        }
+
+        /* Định dạng Bảng */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background-color: #0f172a;
+        }
+
+        table, th, td {
+            border: 1px solid #1e293b;
+        }
+
+        th {
+            background-color: #111827;
+            padding: 12px;
+            text-align: left;
+            color: #38bdf8;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            color: #94a3b8;
+            vertical-align: top;
+        }
+
+        .text-muted {
+            color: #64748b;
+        }
+
+        .rank-perfect {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .rank-high {
+            color: #22c55e;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #0f172a;
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 60px;
+            border-top: 1px solid rgba(56, 189, 248, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">PORTFOLIO KỸ NĂNG SỐ</div>
+            <ul>
+                <li><a href="#gioi-thieu">1. Giới thiệu</a></li>
+                <li><a href="#du-an">2. Các Dự án thành phần</a></li>
+                <li><a href="#tong-ket">3. Tổng kết học phần</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="gioi-thieu">
+            <h2>1. Trang Giới Thiệu Bản Thân</h2>
+            <p><strong>Họ và tên sinh viên:</strong> Nguyễn Văn Chính</p>
+            <p><strong>Mã số sinh viên:</strong> 25022112</p>
+            <p><strong>Ngành học:</strong> CÔNG NGHỆ KỸ THUẬT ĐIỆN TỬ – VIỄN THÔNG</p>
+            <p><strong>Sở thích:</strong> Khám phá ứng dụng công nghệ, tối ưu hóa quy trình làm việc, tìm hiểu kiến trúc dữ liệu và phát triển kỹ năng tự học thông qua nền tảng số.</p>
+            
+            <h3>Mục tiêu học tập & Định hướng phát triển cá nhân</h3>
+            <p>Xây dựng nền tảng tư duy tin học vững chắc, làm chủ các công cụ cộng tác trực tuyến hiện đại để tối ưu hóa hiệu suất học tập. Trong tương lai, hướng tới việc ứng dụng kỹ nghệ gợi ý (Prompt Engineering) và các công cụ AI tạo sinh một cách có trách nhiệm nhằm giải quyết các bài toán phân tích, quản lý dữ liệu phức tạp trong doanh nghiệp.</p>
+            
+            <h3>Mục tiêu của Portfolio cá nhân</h3>
+            <p>Hệ thống hóa một cách trực quan, khoa học toàn bộ tiến trình học tập và kết quả thực hành từ Bài tập 1 đến Bài tập 6. Đây là minh chứng cụ thể cho các kỹ năng số đã tích lũy, đồng thời là không gian lưu trữ lâu dài giúp bản thân tự đánh giá, cải tiến năng lực ứng dụng công nghệ trong môi trường số hóa ngày nay.</p>
+        </section>
+
+
+        <section id="du-an">
+            <h2>2. Trang Dự Án (Tổng hợp 6 Bài tập thực hành)</h2>
+            <p style="color: #64748b; font-style: italic; margin-bottom: 30px;">Dưới đây là chi tiết mục tiêu, quy trình triển khai bài bản và phân tích kết quả của từng bài tập theo yêu cầu:</p>
+
+            <div class="content-box" style="margin-bottom: 35px; padding: 25px;">
+                <h3>Bài 1: Tổng quan về hệ thống máy tính & Quản lý tệp tin cơ bản</h3>
+                <p style="font-style: italic; color: #64748b; margin-bottom: 15px;">Trong bài học này, tôi đã được trang bị và làm quen với các kiến thức nền tảng sau:</p>
+
+                <div class="content-box">
+                    <h3>Hiểu rõ các khái niệm cốt lõi:</h3>
+                    <p class="box-desc">Sự khác biệt giữa dữ liệu thô chưa qua xử lý và thông tin có ý nghĩa, nguyên lý xử lý dữ liệu số hóa (dưới dạng bit 0 và 1) của máy tính thông qua các khâu nhập, lưu trữ, xử lý và xuất thông tin.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Phân biệt các thành phần của hệ thống máy tính:</h3>
+                    <p class="box-desc">Nắm vững vai trò của phần cứng (đặc biệt là "bộ não" CPU, bộ nhớ RAM, ROM, bo mạch chủ) và phần mềm (hệ điều hành, phần mềm ứng dụng) trong việc kết nối và điều phối hoạt động.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Mạng máy tính và ứng dụng thực tế:</h3>
+                    <p class="box-desc">Hiểu cách máy tính kết nối qua mạng LAN, Wifi, Bluetooth, NFC, cũng như cách khai thác các hệ điều hành phổ biến (Windows, macOS, Linux) và phần mềm phục vụ học tập đại học (Word, LMS, Zotero, Zoom).</p>
+                </div>
+
+                <a href="https://1drv.ms/w/c/f303e83b7afbf840/IQA3T9YyRXzhTJhzRk0PN1AJAYdYBc7wBk7Q8GEcVMgF5O0?e=AsdQXX" target="_blank" class="btn-link">👉 Click để xem Sản phẩm Truyền thông hoàn thiện</a>
+            </div>
+               
+            <div class="content-box" style="margin-bottom: 35px; padding: 25px;">
+                <h3>Bài 2: Khai thác dữ liệu và quản trị thông tin số</h3>
+                <p><strong>Mục tiêu:</strong> Làm chủ kỹ năng định vị, đánh giá nguồn tin học thuật đáng tin cậy và thiết lập tư duy quản trị dữ liệu khoa học an toàn.</p>
+                
+                <div style="font-size: 0.95em; margin-top: 15px; margin-bottom: 15px; padding-left: 15px; border-left: 2px solid #1e293b;">
+                    <p style="margin-bottom: 10px;"><strong>🔹 Bản chất thông tin & Dữ liệu lớn:</strong> Tôi đã học cách phân định rõ ràng các tầng nấc từ dữ liệu thô, thông tin có ngữ cảnh đến tri thức ứng dụng, đồng thời hiểu sâu sắc đặc điểm của Big Data thông qua mô hình 5V.</p>
+                    <p style="margin-bottom: 10px;"><strong>🔹 Tổ chức & An toàn dữ liệu:</strong> Thực hành xây dựng cây thư mục logic, áp dụng nguyên tắc đặt tên file nhất quán và triển khai quy trình sao lưu 3-2-1 (giữ 3 bản sao, trên 2 loại thiết bị khác nhau, với 1 bản lưu trữ ở nơi khác) để bảo vệ tài liệu học tập tuyệt đối.</p>
+                    <p style="margin-bottom: 0;"><strong>🔹 Khai thác & Kiểm định nâng cao:</strong> Ứng dụng thành thạo các toán tử tìm kiếm chuyên sâu (như ngoặc kép "", dấu trừ -, toán tử site:, filetype:) để sàng lọc tài liệu trên Google Scholar và VNU LIC. Mọi nguồn tin thu thập đều được thẩm định nghiêm ngặt qua bài kiểm tra CRAAP (Tính cập nhật, Sự liên quan, Tác giả, Tính chính xác, Mục đích) kết hợp quản lý trích dẫn chuẩn APA/Harvard để phòng chống đạo văn.</p>
+                </div>
+
+                <p style="font-weight: bold; color: #38bdf8; margin-top: 20px; margin-bottom: 10px;">📊 Bảng tổng hợp xếp hạng độ tin cậy tài liệu nghiên cứu thực tế:</p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tên tài liệu & Tác giả (Chuẩn APA)</th>
+                                <th>Cơ quan xuất bản / Tạp chí</th>
+                                <th>Phương pháp nghiên cứu</th>
+                                <th>Trích dẫn & Tính cập nhật (CRAAP)</th>
+                                <th>Xếp hạng độ tin cậy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-muted">Vial, G. (2019). The digital transformation of traditional businesses: A review. <em>Strategic IS</em>.</td>
+                                <td>Elsevier / Tạp chí Q1 uy tín</td>
+                                <td>Tổng quan hệ thống (282 bài báo)</td>
+                                <td>&gt;4.200 lượt trích dẫn / Dữ liệu chuẩn</td>
+                                <td><span class="rank-perfect">Tuyệt đối (A+)</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-muted">Nghiên cứu Chuyển đổi số / Nguyễn Văn B (2024)</td>
+                                <td>Tạp chí Khoa học & Công nghệ Quốc gia</td>
+                                <td>Định lượng (Khảo sát 200 DN)</td>
+                                <td>24 lượt trích dẫn / Xuất bản năm 2024</td>
+                                <td><span class="rank-high">Rất cao (A)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a href="https://1drv.ms/w/c/f303e83b7afbf840/IQCYxktVjVkYSLQMSnZiJtLHAfj0iP9ORJ462PHhjxgDuF0?e=oSKOrt" target="_blank" class="btn-link">👉 Xem Danh mục & Báo cáo đánh giá Bài 2 chi tiết</a>
+            </div>
+
+            <div class="content-box" style="margin-bottom: 35px; padding: 25px;">
+                <h3>Bài 3: Kỹ nghệ tương tác và thiết kế PROMPT hiệu quả</h3>
+                <p><strong>Mục tiêu:</strong> Thấu hiểu nguyên lý hoạt động của Generative AI và làm chủ kỹ năng thiết kế câu lệnh để tối ưu hóa hiệu suất học tập.</p>
+                
+                <div style="font-size: 0.95em; margin-top: 15px; margin-bottom: 15px; padding-left: 15px; border-left: 2px solid #1e293b;">
+                    <p style="margin-bottom: 10px;"><strong>🔹 Tổng quan và Định hướng học tập:</strong> Nắm rõ mục tiêu học tập cốt lõi và cấu trúc nội dung chính của toàn bộ bài học để xây dựng lộ trình tiếp thu hiệu quả.</p>
+                    <p style="margin-bottom: 10px;"><strong>🔹 Bản chất của Trí tuệ nhân tạo (AI):</strong> Giới thiệu toàn diện về khái niệm Trí tuệ nhân tạo, hiểu được vai trò và tầm ảnh hưởng của AI trong việc phát triển năng lực số, hỗ trợ tối đa cho người học trong thời đại công nghệ.</p>
+                    <p style="margin-bottom: 10px;"><strong>🔹 Kỹ nghệ tương tác và thiết kế PROMPT:</strong> Thấu hiểu nguyên lý làm việc sâu bên trong của các mô hình AI. Làm chủ các mô hình viết PROMPT và thực hành thuần thục các kỹ thuật viết câu lệnh (PROMPT) từ mức độ cơ bản đến nâng cao để tối ưu hóa kết quả đầu ra.</p>
+                    <p style="margin-bottom: 0;"><strong>🔹 Thực hành ứng dụng thực tế:</strong> Trực tiếp thao tác, thực hành ứng dụng các công cụ AI thông dụng hiện nay vào công việc và học tập, đồng thời hệ thống hóa toàn bộ kiến thức qua bài giảng tổng quan.</p>
+                </div>
+
+                <p style="font-weight: bold; color: #38bdf8; margin-top: 20px; margin-bottom: 10px;">📋 Bảng so sánh các kỹ thuật Prompt Engineering đã thực nghiệm:</p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 25%;">Kỹ thuật Prompt</th>
+                                <th style="width: 45%;">Ví dụ cấu trúc câu lệnh áp dụng</th>
+                                <th style="width: 30%;">Đánh giá kết quả đầu ra của AI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Role Prompting (Đóng vai)</strong></td>
+                                <td>"Hãy đóng vai là một chuyên gia công nghệ số, tóm tắt các đặc điểm của Big Data mô hình 5V..."</td>
+                                <td class="rank-high">Góc nhìn chuyên sâu, hành văn chuyên nghiệp và tập trung đúng trọng tâm.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Few-Shot Prompting (Cung cấp mẫu)</strong></td>
+                                <td>"Dưới đây là một ví dụ về trích dẫn chuẩn APA: [Mẫu]. Hãy làm tương tự với tài liệu sau:..."</td>
+                                <td class="rank-high">AI làm theo chính xác 100% định dạng mẫu được cung cấp, không bị lệch phông.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chain-of-Thought (Suy nghĩ từng bước)</strong></td>
+                                <td>"Hãy suy nghĩ từng bước một để giải quyết bài toán quản trị tệp tin theo nguyên tắc 3-2-1..."</td>
+                                <td class="rank-high">Lập luận rất logic, rõ ràng, hạn chế tối đa hiện tượng AI bị "ảo tưởng" thông tin.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <a href="https://1drv.ms/w/c/f303e83b7afbf840/IQAOostFxmF_QYRGkQGH7QNjAaxys9rIxXlfoekCVoKlaKc?e=9BMobG" target="_blank" class="btn-link">👉 Xem Báo cáo kết quả thử nghiệm Prompt nâng cao Bài 3</a>
+            </div>                
+
+            <div class="content-box" style="margin-bottom: 35px; padding: 25px;">
+                <h3>Bài 4: Kỹ năng hợp tác và truyền thông trong môi trường số</h3>
+                <p style="font-style: italic; color: #64748b; margin-bottom: 15px;">Tóm tắt các giá trị cốt lõi đúc kết từ bài học:</p>
+
+                <div class="content-box">
+                    <h3>Đặc điểm và nguyên tắc giao tiếp số:</h3>
+                    <p class="box-desc">Phân biệt được giao tiếp đồng bộ (đồng thời, phản hồi tức thì) và không đồng bộ (có độ trễ, lưu vết dữ liệu qua "dấu chân số"), từ đó biết cách chọn phương tiện phù hợp và rèn luyện các nghi thức ứng xử văn minh (netiquette), đặc biệt là kỹ năng viết email chuyên nghiệp.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Kỹ năng hợp tác trực tuyến:</h3>
+                    <p class="box-desc">Cách thiết lập không gian làm việc nhóm, phân chia vai trò minh bạch và giải quyết xung đột dựa trên các nền tảng số như Google Workspace, Microsoft Teams, Asana hay Notion.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Ứng dụng Trí tuệ nhân tạo (AI) trong học tập:</h3>
+                    <p class="box-desc">Sử dụng AI tạo sinh (nhũ ChatGPT) làm trợ lý ảo để tổng hợp thông tin, lên kế hoạch và soạn thảo văn bản, đồng thời nắm rõ nguyên tắc chịu trách nhiệm và giữ vững liêm chính học thuật.</p>
+                </div>
+                <a href="https://1drv.ms/w/c/f303e83b7afbf840/IQBUhs-P8A_hT7jpOkvsMkbxAWfGeT9VJ2AXGod16fa4aPQ?e=sBOIIl" target="_blank" class="btn-link">👉 Xem Báo cáo kết quả Bài 4 chi tiết</a>
+            </div> 
+
+            <div class="content-box" style="margin-bottom: 35px; padding: 25px;">
+                <h3>Bài 5: Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung số</h3>
+                <p style="font-style: italic; color: #64748b; margin-bottom: 15px;">Các kiến thức đổi mới đã áp dụng trong bài thực hành:</p>
+
+                <div class="content-box">
+                    <h3>Quy trình và định dạng nội dung số:</h3>
+                    <p class="box-desc">Nắm vững 5 định dạng nội dung cốt lõi bao gồm văn bản, hình ảnh, âm thanh, video và đa phương tiện. Đồng thời, làm chủ quy trình 6 bước sáng tạo bài bản từ khâu lên ý tưởng, lập kế hoạch chi tiết, sản xuất, biên tập, xuất bản cho đến đo lường và tối ưu hóa chất lượng sản phẩm số.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Bản quyền và đạo đức không gian số:</h3>
+                    <p class="box-desc">Hiểu rõ các giới hạn đạo đức trong sáng tạo nội dung và nâng cao ý thức tôn trọng sở hữu trí tuệ. Nắm vững nguyên tắc sử dụng hợp lý (Fair Use) cùng ý nghĩa thực tiễn của các loại giấy phép mở Creative Commons (CC) để khai thác tài nguyên mạng an toàn.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Hệ sinh thái công cụ số:</h3>
+                    <p class="box-desc">Làm quen và làm chủ bộ đồ nghề sáng tạo đa phương tiện phong phú, có sự kết hợp nhịp nhàng giữa các công cụ truyền thống (Word, Notion, Canva, CapCut) và các ứng dụng AI tiên tiến (Microsoft Designer, Adobe Podcast Enhance, Gamma) nhằm tối ưu hóa hiệu suất công việc.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Ứng dụng AI tạo sinh có trách nhiệm:</h3>
+                    <p class="box-desc">Biết cách cộng tác với AI như một "bộ não phụ" đắc lực để brainstorm ý tưởng, lên dàn ý chi tiết hoặc viết nháp. Đồng thời, tuân thủ nghiêm ngặt bộ 6 tiêu chí kiểm duyệt nội dung do AI tạo ra (chính xác, độc đáo, phù hợp, không thiên kiến, mạch lạc, minh bạch) để đảm bảo liêm chính học thuật.</p>
+                </div>
+                <a href="https://1drv.ms/w/c/f303e83b7afbf840/IQAR4b4zcI5aSKhti22sp8bVASYFpQq2x0bIUZWmmsQY2-Q?e=z1Hxhk" target="_blank" class="btn-link">👉 Sản phẩm đính kèm: Link xem Infographic hoàn thiện</a>
+            </div>
+
+            <div class="content-box" style="margin-bottom: 20px; padding: 25px;">
+                <h3>Bài 6: An toàn, an sinh và đạo đức trong môi trường số</h3>
+                <p style="font-style: italic; color: #64748b; margin-bottom: 15px;">Các bài học cốt lõi về bảo vệ bản thân và trách nhiệm cộng đồng số:</p>
+
+                <div class="content-box">
+                    <h3>Quản lý danh tính số và an toàn thông tin:</h3>
+                    <p class="box-desc">Nhận diện các loại dấu chân số (chủ động và bị động), các nguy cơ an ninh mạng phổ biến (Lừa đảo trực tuyến/Phishing, Mã độc tống tiền/Ransomware, công nghệ Deepfake do AI tạo ra) và thực hành các biện pháp bảo vệ thiết bị như xác thực hai yếu tố (2FA), quản lý mật khẩu mạnh, nguyên tắc sao lưu dữ liệu 3-2-1.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>An sinh số và trách nhiệm công dân:</h3>
+                    <p class="box-desc">Bảo vệ sức khỏe thể chất bằng quy tắc 20-20-20 cho mắt; duy trì sức khỏe tinh thần thông qua "cai nghiện số" (digital detox), tránh hội chứng sợ bỏ lỡ (FOMO); nâng cao trách nhiệm cộng đồng bằng cách kiểm chứng thông tin trước khi chia sẻ và xử lý rác thải điện tử đúng cách.</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Liêm chính học thuật và đạo đức AI:</h3>
+                    <p class="box-desc">Hiểu rõ các hình thức vi phạm liêm chính (đạo văn, bịa đặt dữ liệu) và nắm vững kỹ năng diễn giải (paraphrasing), trích dẫn nguồn hợp lệ. Nhận diện các giới hạn của AI (ảo giác AI, thiên kiến) và tuân thủ nguyên tắc minh bạch, chịu trách nhiệm cá nhân (không để AI thay thế tư duy) khi ứng dụng trí tuệ nhân tạo.</p>
+                </div>
+                <a href="https://1drv.ms/w/c/f303e83b7afbf840/IQBFuctt3kjgTIv-dqz2cyVUAewji44tmi0NEKjSfzXEeiQ?e=p6GAVe" target="_blank" class="btn-link">👉 Sản phẩm đính kèm: Infographic "Sử dụng AI có trách nhiệm"</a>
+            </div>
+        </section>
+
+
+        <section id="tong-ket">
+            <h2>3. Trang Tổng Kết Hành Trình Đóng Gói Portfolio</h2>
+            
+            <h3>Trải nghiệm & Cảm nhận cá nhân sâu sắc</h3>
+            <p>Hành trình xây dựng chiếc Portfolio này không đơn thuần là việc hoàn thành một bài tập lớn, mà là một cơ hội nhìn nhận lại toàn bộ tiến trình tiến hóa về mặt tư duy công nghệ của bản thân. Đi từ những bước thao tác quản lý tệp tin sơ khai, bỡ ngỡ với các toán tử học thuật, cho đến việc làm chủ công nghệ phối hợp nhóm và tối ưu kỹ nghệ gợi ý AI. Việc tự mình đóng gói tất cả các sản phẩm rời rạc lên một trang web HTML mang lại một trải nghiệm thực tế vô cùng giá trị và tự hào.</p>
+            
+            <h3>Kiến thức hệ thống và Kỹ năng cốt lõi tích lũy</h3>
+            <p>Thông qua chuỗi bài tập thành phần, bản thân đã đúc kết được bộ ba nhóm năng lực thiết yếu trong kỷ nguyên số:</p>
+            <ul>
+                <li><strong>Kỹ năng hạ tầng và quản trị dữ liệu:</strong> Biết cách tổ chức lưu trữ thông tin khoa học, thiết lập môi trường cộng tác trực tuyến thông minh, đồng bộ hóa quy trình làm việc nhóm.</li>
+                <li><strong>Kỹ năng khai thác và xử lý thông tin:</strong> Tư duy phản biện khi tiếp cận thông tin học thuật, có bộ lọc đánh giá nguồn tin chuẩn xác thay vì thu thập thông tin thụ động từ mạng internet.</li>
+                <li><strong>Kỹ năng làm chủ công nghệ tương lai:</strong> Làm chủ tư duy giao tiếp với AI thế hệ mới, hiểu rõ các nguyên tắc đạo đức để ứng dụng công nghệ một cách văn minh, chuyên nghiệp.</li>
+            </ul>
+            
+            <h3>Điểm tâm đắc nhất & Những thách thức đã vượt qua</h3>
+            <p><strong>Điểm tâm đắc nhất:</strong> Là việc xây dựng được bộ nguyên tắc sử dụng AI có trách nhiệm và tối ưu hóa thành công hiệu suất học tập nhờ Multi-AI Workflow. Công nghệ đã thực sự trở thành cánh tay nối dài cho năng lực sáng tạo cá nhân.</p>
+            <p><strong>Thách thức lớn nhất:</strong> Đó chính là việc vượt qua bẫy "ỷ lại vào công nghệ" và hiện tượng "AI ảo tưởng" (Hallucination). Đã có lúc dữ liệu AI cung cấp trông rất logic nhưng khi đối chiếu lại bằng các toán tử học thuật ở Bài tập 2 thì phát hiện ra số liệu không có thật. Vượt qua thách thức đó giúp bản thân rèn luyện được bộ óc hoài nghi khoa học và tư duy độc lập sắc bén.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 - Portfolio Kỹ Năng Số Cá Nhân - Nguyễn Văn Chính</p>
+        <p style="color: #475569; margin-top: 5px;">Sản phẩm cấu trúc bài nộp được hoàn thiện chuẩn mực bằng ngôn ngữ HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>
